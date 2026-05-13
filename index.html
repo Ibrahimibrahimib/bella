@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>For You, Always</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Quicksand:wght@400;500;600&display=swap"
+			rel="stylesheet"
+		>
+		<style>
+			:root {
+				--rose-1: #f7c7d9;
+				--rose-2: #f2a6c4;
+				--rose-3: #d95c8a;
+				--plum: #5a2b4b;
+				--cream: #fff7f2;
+				--ink: #2b1c22;
+			}
+
+			body {
+				font-family: "Quicksand", system-ui, -apple-system, "Segoe UI", sans-serif;
+				background: radial-gradient(1200px 500px at 20% -10%, #fff 0%, #ffe8f0 40%, #f9d7e5 65%, #f1c2d6 100%),
+					linear-gradient(135deg, #fff 0%, #ffeef5 40%, #f6c6d8 100%);
+				color: var(--ink);
+				min-height: 100vh;
+			}
+
+			.hero {
+				padding: 5rem 0 4rem;
+			}
+
+			.title {
+				font-family: "Playfair Display", "Times New Roman", serif;
+				font-weight: 700;
+				letter-spacing: 0.5px;
+				color: var(--plum);
+			}
+
+			.subtitle {
+				color: #6a3b57;
+				font-size: 1.1rem;
+			}
+
+			.card-romance {
+				background: rgba(255, 255, 255, 0.8);
+				border: 1px solid rgba(217, 92, 138, 0.15);
+				border-radius: 22px;
+				box-shadow: 0 18px 60px rgba(90, 43, 75, 0.12);
+				backdrop-filter: blur(10px);
+			}
+
+			.heart {
+				width: 26px;
+				height: 26px;
+				background: var(--rose-3);
+				position: relative;
+				transform: rotate(45deg);
+				display: inline-block;
+				margin-right: 10px;
+			}
+
+			.heart::before,
+			.heart::after {
+				content: "";
+				width: 26px;
+				height: 26px;
+				background: var(--rose-3);
+				border-radius: 50%;
+				position: absolute;
+			}
+
+			.heart::before {
+				left: -13px;
+				top: 0;
+			}
+
+			.heart::after {
+				top: -13px;
+				left: 0;
+			}
+
+			.note {
+				font-size: 1rem;
+				line-height: 1.8;
+				color: #4b2c3b;
+			}
+
+			.ribbon {
+				display: inline-block;
+				padding: 0.45rem 1rem;
+				background: linear-gradient(120deg, var(--rose-2), var(--rose-3));
+				color: #fff;
+				border-radius: 999px;
+				font-weight: 600;
+				letter-spacing: 0.3px;
+				box-shadow: 0 10px 24px rgba(217, 92, 138, 0.25);
+			}
+
+			.list-heart li {
+				margin-bottom: 0.75rem;
+				display: flex;
+				align-items: flex-start;
+				gap: 0.65rem;
+			}
+
+			.mini-heart {
+				width: 14px;
+				height: 14px;
+				background: var(--rose-3);
+				position: relative;
+				transform: rotate(45deg);
+				margin-top: 0.35rem;
+				flex: 0 0 auto;
+			}
+
+			.mini-heart::before,
+			.mini-heart::after {
+				content: "";
+				width: 14px;
+				height: 14px;
+				background: var(--rose-3);
+				border-radius: 50%;
+				position: absolute;
+			}
+
+			.mini-heart::before {
+				left: -7px;
+				top: 0;
+			}
+
+			.mini-heart::after {
+				top: -7px;
+				left: 0;
+			}
+
+			.photo-frame {
+				border-radius: 22px;
+				background: linear-gradient(160deg, #fff7fb 0%, #ffe0ee 50%, #ffd3e6 100%);
+				padding: 1.25rem;
+				border: 1px solid rgba(217, 92, 138, 0.2);
+			}
+
+			.memory-card {
+				background: #fffafc;
+				border: 1px solid rgba(217, 92, 138, 0.15);
+				border-radius: 16px;
+				padding: 1rem;
+				height: 100%;
+				box-shadow: 0 10px 30px rgba(90, 43, 75, 0.08);
+			}
+
+			.memory-title {
+				font-weight: 600;
+				color: var(--plum);
+			}
+
+			.footer-note {
+				font-size: 0.95rem;
+				color: #6a3b57;
+			}
+
+			.btn-love {
+				background: var(--plum);
+				color: #fff;
+				border: none;
+				padding: 0.75rem 1.5rem;
+				border-radius: 999px;
+				font-weight: 600;
+				box-shadow: 0 12px 28px rgba(90, 43, 75, 0.25);
+			}
+
+			.btn-love:hover,
+			.btn-love:focus {
+				background: #47213b;
+				color: #fff;
+			}
+
+			.intro-screen {
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				text-align: center;
+				padding: 3rem 1.5rem;
+			}
+
+			.intro-card {
+				max-width: 520px;
+			}
+
+			.btn-cute {
+				background: linear-gradient(120deg, var(--rose-2), var(--rose-3));
+				color: #fff;
+				border: none;
+				padding: 0.9rem 2rem;
+				border-radius: 999px;
+				font-weight: 600;
+				letter-spacing: 0.3px;
+				box-shadow: 0 14px 30px rgba(217, 92, 138, 0.3);
+				transition: transform 0.2s ease, box-shadow 0.2s ease;
+			}
+
+			.btn-cute:hover,
+			.btn-cute:focus {
+				transform: translateY(-2px) scale(1.02);
+				box-shadow: 0 18px 36px rgba(217, 92, 138, 0.35);
+				color: #fff;
+			}
+
+			.hidden {
+				display: none;
+			}
+
+			.petals {
+				position: absolute;
+				inset: 0;
+				overflow: hidden;
+				pointer-events: none;
+				z-index: 0;
+			}
+
+			.petal {
+				position: absolute;
+				width: 18px;
+				height: 26px;
+				background: radial-gradient(circle at 30% 30%, #fff 0%, #f7aecd 55%, #e36a9d 100%);
+				border-radius: 60% 60% 60% 60%;
+				opacity: 0.6;
+				animation: float 12s linear infinite;
+			}
+
+			.petal:nth-child(1) { left: 10%; animation-delay: 0s; }
+			.petal:nth-child(2) { left: 28%; animation-delay: 2s; }
+			.petal:nth-child(3) { left: 50%; animation-delay: 4s; }
+			.petal:nth-child(4) { left: 70%; animation-delay: 1s; }
+			.petal:nth-child(5) { left: 85%; animation-delay: 3s; }
+
+			@keyframes float {
+				0% { transform: translateY(-10%) rotate(0deg); }
+				50% { transform: translateY(60vh) rotate(25deg); }
+				100% { transform: translateY(120vh) rotate(60deg); }
+			}
+
+			@media (max-width: 768px) {
+				.hero {
+					padding: 3.5rem 0 2.5rem;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="position-relative">
+			<div class="petals">
+				<span class="petal"></span>
+				<span class="petal"></span>
+				<span class="petal"></span>
+				<span class="petal"></span>
+				<span class="petal"></span>
+			</div>
+
+			<section class="intro-screen position-relative" id="introScreen" style="z-index: 1;">
+				<div class="card-romance intro-card p-4 p-md-5">
+					<span class="ribbon mb-3 d-inline-block">Open me gently</span>
+					<h1 class="title display-5 mb-3">A tiny surprise for you</h1>
+					<p class="note mb-4">
+						I made a little page just to say how much you mean to me.
+						Tap the button when you are ready.
+					</p>
+					<button class="btn-cute" id="openLove" type="button">Open the love note</button>
+				</div>
+			</section>
+
+			<main class="container position-relative hidden" id="lovePage" style="z-index: 1;">
+				<section class="hero">
+					<div class="row align-items-center g-4">
+						<div class="col-lg-6">
+							<span class="ribbon mb-3 d-inline-block">A little love note</span>
+							<h1 class="title display-4 mb-3">For the girl who makes my days glow</h1>
+							<p class="subtitle mb-4">
+								You are my favorite reason to smile. This is a tiny page, but it holds a very big heart.
+							</p>
+							<div class="card-romance p-4">
+								<div class="d-flex align-items-center mb-3">
+									<span class="heart" aria-hidden="true"></span>
+									<h2 class="title h4 mb-0">Why I adore you</h2>
+								</div>
+								<p class="note mb-3">
+									You make ordinary moments feel like a movie scene. Your kindness, your laugh, and the way you care
+									turn my world brighter every day.
+								</p>
+								<ul class="list-unstyled list-heart note">
+									<li><span class="mini-heart" aria-hidden="true"></span>Your smile makes time slow down.</li>
+									<li><span class="mini-heart" aria-hidden="true"></span>You listen with your whole heart.</li>
+									<li><span class="mini-heart" aria-hidden="true"></span>You believe in me when I need it most.</li>
+								</ul>
+								<button class="btn-love mt-3" type="button">Forever yours</button>
+							</div>
+						</div>
+						<div class="col-lg-6">
+							<div class="photo-frame">
+								<div class="card-romance p-4">
+									<h3 class="title h5 mb-3">Our sweetest memories</h3>
+									<div class="row g-3">
+										<div class="col-6">
+											<div class="memory-card">
+												<p class="memory-title mb-1">First hello</p>
+												<p class="note mb-0">May 10, 2026 — the moment I knew I wanted to know you forever.</p>
+											</div>
+										</div>
+										<div class="col-6">
+											<div class="memory-card">
+												<p class="memory-title mb-1">Stolen sunsets</p>
+												<p class="note mb-0">Every sky felt softer when I was with you.</p>
+											</div>
+										</div>
+										<div class="col-12">
+											<div class="memory-card">
+												<p class="memory-title mb-1">Favorite promise</p>
+												<p class="note mb-0">To love you in the small moments and the grand adventures.</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="pb-5">
+					<div class="card-romance p-4">
+						<div class="row g-4 align-items-center">
+							<div class="col-md-8">
+								<h3 class="title h4 mb-2">A promise just for you</h3>
+								<p class="note mb-0">
+									I will keep choosing you, cheering for you, and loving you in all the little ways that matter most.
+									Thank you for being my calm, my joy, and my home.
+								</p>
+							</div>
+							<div class="col-md-4 text-md-end">
+								<span class="ribbon">Always and only</span>
+							</div>
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<footer class="text-center pb-4">
+				<p class="footer-note mb-1">Made with love, just for you.</p>
+				<small class="footer-note">Every day with you is my favorite day.</small>
+			</footer>
+		</div>
+
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+		<script>
+			const openLove = document.getElementById("openLove");
+			const introScreen = document.getElementById("introScreen");
+			const lovePage = document.getElementById("lovePage");
+
+			openLove.addEventListener("click", () => {
+				introScreen.classList.add("hidden");
+				lovePage.classList.remove("hidden");
+				window.scrollTo({ top: 0, behavior: "smooth" });
+			});
+		</script>
+	</body>
+</html>
